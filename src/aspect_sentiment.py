@@ -43,13 +43,14 @@ class AspectSentimentAnalyzer:
         aspect_sentiments: dict[str, str] = {}
 
         for aspect in aspects:
-            sentiment = "Unknown"
+            sentiment_label = "Unknown"
 
             for sentence in sentences:
                 if aspect in sentence.lower():
-                    sentiment = self._sentiment_analyzer.predict(sentence)
+                    sentiment_result = self._sentiment_analyzer.analyze(sentence)
+                    sentiment_label = sentiment_result["label"]
                     break
 
-            aspect_sentiments[aspect] = sentiment
+            aspect_sentiments[aspect] = sentiment_label
 
         return aspect_sentiments

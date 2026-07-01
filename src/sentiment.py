@@ -31,14 +31,18 @@ class SentimentAnalyzer:
         Analyze the sentiment of the input text.
 
         Args:
-         text: Customer review.
+            text: Customer review.
 
         Returns:
-        
-        Dictionary containing sentiment label and confidence score.
+            Dictionary containing sentiment label and confidence score.
         """
-    
-        cleaned_text = clean_text(text)
-        result = self.classifier(cleaned_text)
 
-        return result[0]
+        cleaned_text = clean_text(text)
+
+        result = self.classifier(cleaned_text)[0]
+
+        return {
+            "label": result["label"].capitalize(),
+            "score": round(result["score"], 4),
+        }
+    

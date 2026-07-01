@@ -29,7 +29,8 @@ class RecommendationEngine:
             Dictionary containing the recommendation and reason.
         """
 
-        sentiment = self._sentiment_analyzer.predict(review)
+        result = self._sentiment_analyzer.analyze(review)
+        sentiment = result["label"]
 
         if sentiment == "Positive":
             recommendation = "Recommended"
