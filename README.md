@@ -1,160 +1,220 @@
-# 🚀 ReviewSense AI
+# ReviewSense AI
 
-An end-to-end NLP application that analyzes Amazon product reviews using modern Transformer models.
+An end-to-end NLP application that analyzes customer product reviews using state-of-the-art Natural Language Processing and Transformer models.
 
-ReviewSense AI summarizes customer reviews, performs sentiment analysis, extracts product aspects, and generates an intelligent buying recommendation based on customer feedback.
-
----
-
-## 📌 Project Motivation
-
-Online products often receive thousands of reviews, making it difficult for customers to understand the overall opinion before purchasing.
-
-ReviewSense AI aims to solve this problem by automatically:
-
-- Summarizing large collections of reviews
-- Identifying customer sentiment
-- Extracting important product aspects
-- Generating an easy-to-understand buying recommendation
-
-This project is being built as a learning journey into **Natural Language Processing (NLP)**, **Transformers**, and **Generative AI**.
+ReviewSense AI summarizes reviews, predicts overall sentiment, extracts product aspects, performs aspect-based sentiment analysis, and generates a buying recommendation through a simple Streamlit interface.
 
 ---
 
-## 🎯 Project Objectives
+## Features
 
-- Build a modern NLP pipeline from scratch
-- Understand Transformer-based text processing
-- Learn Hugging Face Transformers in depth
-- Apply Aspect-Based Sentiment Analysis (ABSA)
-- Develop a complete AI application using Streamlit
-
----
-
-## 🛠️ Tech Stack
-
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Scikit-learn
-- NLTK
-- spaCy
-- Hugging Face Transformers
-- PyTorch
-- Streamlit
+- Review Summarization using Hugging Face Transformers (BART)
+- Sentiment Analysis using RoBERTa
+- Aspect Extraction using spaCy Noun Chunks
+- Aspect-Based Sentiment Analysis
+- Buying Recommendation Engine
+- Interactive Streamlit Web Application
 
 ---
 
-## 📂 Project Structure
+## Demo
 
-```
+### Input
+
+Paste any customer product review into the application.
+
+### Output
+
+- Review Summary
+- Overall Sentiment
+- Confidence Score
+- Buying Recommendation
+- Aspect-wise Sentiment Analysis
+
+---
+
+## Project Structure
+
+```text
 ReviewSense-AI/
 │
-├── app/                # Streamlit application
-├── data/               # Dataset instructions (dataset not included)
-├── notebooks/          # EDA and experimentation notebooks
-├── src/                # NLP pipeline implementation
+├── app/
+│   └── app.py
+│
+├── data/
+│
+├── notebooks/
+│
+├── src/
+│   ├── __init__.py
+│   ├── preprocessing.py
+│   ├── summarizer.py
+│   ├── sentiment.py
+│   ├── aspect_extractor.py
+│   ├── aspect_sentiment.py
+│   └── recommendation.py
+│
+├── tests/
 │
 ├── requirements.txt
+│
 ├── README.md
+│
 └── .gitignore
 ```
 
 ---
 
-## 📊 Dataset
+## Technologies Used
 
-This project uses the **Amazon Fine Food Reviews Dataset**.
+### Programming Language
 
-Dataset Statistics:
+- Python
 
-- **568,454 customer reviews**
-- Product ratings from **1–5 stars**
-- Review summaries
-- Full review text
-- Helpfulness votes
+### NLP Libraries
 
-> **Note:** The dataset is not included in this repository due to size and licensing considerations.
+- spaCy
+- Hugging Face Transformers
 
----
+### Machine Learning Framework
 
-## ✅ Progress
+- PyTorch
 
-### Completed
+### Data Processing
 
-- [x] Project setup
-- [x] Exploratory Data Analysis (EDA)
-- [x] Review length feature engineering
-- [x] Dataset quality assessment
+- Pandas
 
-### In Progress
+### Web Framework
 
-- [ ] NLP Text Preprocessing
-- [ ] Tokenization
-- [ ] Transformer Pipeline
-
-### Planned
-
-- [ ] Review Summarization
-- [ ] Sentiment Analysis
-- [ ] Aspect Extraction
-- [ ] Aspect-Based Sentiment Analysis
-- [ ] Buying Recommendation Engine
-- [ ] Streamlit Web Application
+- Streamlit
 
 ---
 
-## 📈 Current Insights
+## Models Used
 
-Exploratory Data Analysis revealed several interesting observations:
-
-- The dataset contains **very few missing values**.
-- Customer ratings are heavily skewed toward **5-star reviews**.
-- The average review contains approximately **80 words**.
-- **3-star reviews** are the longest on average, suggesting customers with mixed experiences provide more detailed feedback.
-- No completely duplicated records were found, although repeated review texts exist across products.
+| Task | Model |
+|------|-------|
+| Review Summarization | `facebook/bart-large-cnn` |
+| Sentiment Analysis | `cardiffnlp/twitter-roberta-base-sentiment-latest` |
+| Aspect Extraction | `spaCy en_core_web_sm` |
 
 ---
 
-## 🚧 Roadmap
+## Installation
 
-- Complete modern NLP preprocessing
-- Implement Transformer tokenization
-- Build review summarization using Hugging Face
-- Develop sentiment analysis pipeline
-- Implement aspect extraction
-- Generate intelligent buying recommendations
-- Deploy with Streamlit
+Clone the repository:
+
+```bash
+git clone https://github.com/Hitanshi31/ReviewSenseAI.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd ReviewSense-AI
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv venv
+```
+
+Activate the virtual environment:
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / macOS**
+
+```bash
+source venv/bin/activate
+```
+
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Download the spaCy English language model:
+
+```bash
+python -m spacy download en_core_web_sm
+```
 
 ---
 
-## 🎓 Learning Goals
+## Run the Application
 
-This project focuses on understanding the concepts behind modern NLP rather than simply using pre-built APIs.
+Start the Streamlit application:
 
-Topics explored include:
-
-- Tokenization
-- Word Embeddings
-- Attention Mechanism
-- Transformers
-- Hugging Face
-- Aspect-Based Sentiment Analysis
-- Large Language Models
+```bash
+streamlit run app/app.py
+```
 
 ---
 
-## 📬 Future Improvements
+## Workflow
 
-- Fine-tuning Transformer models
-- Multi-product comparison
-- Review quality scoring
-- Retrieval-Augmented Generation (RAG)
-- LLM-powered recommendations
+```text
+Customer Review
+        │
+        ▼
+Text Preprocessing
+        │
+        ▼
+Review Summarization
+        │
+        ▼
+Sentiment Analysis
+        │
+        ▼
+Aspect Extraction
+        │
+        ▼
+Aspect-Based Sentiment Analysis
+        │
+        ▼
+Buying Recommendation
+```
 
 ---
 
-## ⭐ Status
+## Example Output
 
-**Currently under active development.**
+### Review Summary
+
+> The earbuds provide excellent sound quality and long battery life, with average microphone performance.
+
+### Overall Sentiment
+
+**Positive**
+
+**Confidence Score:** 96.97%
+
+### Buying Recommendation
+
+**Recommended**
+
+### Aspect Sentiment
+
+| Aspect | Sentiment |
+|---------|-----------|
+| Sound Quality | Positive |
+| Battery | Positive |
+| Charging Case | Positive |
+| Microphone | Neutral |
+
+---
+
+## Future Improvements
+
+- Improve aspect extraction using transformer-based models.
+- Fine-tune an Aspect-Based Sentiment Analysis (ABSA) model.
+- Support batch review analysis.
+- Add multilingual review support.
+- Export analysis reports as PDF or CSV.
